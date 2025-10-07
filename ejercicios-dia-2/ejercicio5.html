@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Operaciones con Dos Números</title>
+</head>
+<body>
+  <h2>Resultados de las operaciones</h2>
+
+  <!-- Contenedor para mostrar resultados -->
+  <div id="resultados"></div>
+
+  <script>
+    // Pedir números al usuario
+    let num1 = Number(prompt("Introduce el primer número:"));
+    let num2 = Number(prompt("Introduce el segundo número:"));
+
+    // Realizar operaciones
+    let suma = num1 + num2;
+    let resta = num1 - num2;
+    let multiplicacion = num1 * num2;
+    let division = num2 !== 0 ? num1 / num2 : "Error: división entre 0";
+
+    // Mostrar resultados en consola
+    console.log("Suma:", suma);
+    console.log("Resta:", resta);
+    console.log("Multiplicación:", multiplicacion);
+    console.log("División:", division);
+
+    // Mostrar resultados en la página web
+    let contenedor = document.getElementById("resultados");
+    contenedor.innerHTML = 
+      "Suma: " + suma + "<br>" +
+      "Resta: " + resta + "<br>" +
+      "Multiplicación: " + multiplicacion + "<br>" +
+      "División: " + division;
+  </script>
+</body>
+</html>
