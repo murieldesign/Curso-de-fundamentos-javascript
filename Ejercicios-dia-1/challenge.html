@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Tarjeta Personal</title>
+</head>
+<body>
+  <h2>Tu primera tarjeta con JavaScript</h2>
+  <div id="tarjeta"></div>
+  <button id="actualizar">Actualizar datos</button>
+
+  <script>
+    // Función que pide los datos al usuario y los muestra en la tarjeta
+    function mostrarTarjeta() {
+      // Pedimos los datos con prompt()
+      let nombre = prompt("¿Cómo te llamas?");
+      let edad = prompt("¿Cuántos años tienes?");
+      let ciudad = prompt("¿En qué ciudad vives?");
+      
+      // Creamos un mensaje con concatenación o template string
+      let mensaje = `
+        <p><strong>Nombre:</strong> ${nombre}</p>
+        <p><strong>Edad:</strong> ${edad} años</p>
+        <p><strong>Ciudad:</strong> ${ciudad}</p>
+      `;
+
+      // Mostramos el contenido dentro del div con id "tarjeta"
+      document.getElementById("tarjeta").innerHTML = mensaje;
+    }
+
+    // Llamamos a la función al cargar la página
+    mostrarTarjeta();
+
+    // Asignamos la función al botón para actualizar los datos
+    document.getElementById("actualizar").onclick = mostrarTarjeta;
+  </script>
+</body>
+</html>
