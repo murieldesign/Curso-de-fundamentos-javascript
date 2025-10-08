@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenge Día 3 - Menú Interactivo</title>
+</head>
+<body>
+  <h2>Menú Interactivo</h2>
+  <script>
+    let opcion; // Variable para almacenar la opción del usuario
+
+    // Bucle que se repetirá al menos una vez
+    do {
+      // Mostrar el menú y pedir la opción
+      opcion = Number(prompt(
+        "MENÚ:\n" +
+        "1. Saludar\n" +
+        "2. Mostrar fecha y hora\n" +
+        "3. Verificar si un número es par o impar\n" +
+        "4. Salir\n\n" +
+        "Ingresa el número de la opción:"
+      ));
+
+      // Validar la opción seleccionada usando switch
+      switch (opcion) {
+        case 1:
+          // Opción 1: Saludar
+          alert("¡Hola! Bienvenido al menú interactivo.");
+          break;
+
+        case 2:
+          // Opción 2: Mostrar fecha y hora actual
+          let fecha = new Date();
+          alert("Fecha y hora actual: " + fecha.toLocaleString());
+          break;
+
+        case 3:
+          // Opción 3: Verificar número par o impar
+          let numero = Number(prompt("Ingresa un número:"));
+          
+          // Usamos if...else para comprobar paridad
+          if (numero % 2 === 0) {
+            alert("El número " + numero + " es PAR.");
+          } else {
+            alert("El número " + numero + " es IMPAR.");
+          }
+          break;
+
+        case 4:
+          // Opción 4: Salir
+          alert("Gracias por usar el menú. ¡Hasta luego!");
+          break;
+
+        default:
+          // Si el usuario ingresa un número fuera del rango
+          alert("Opción no válida. Intenta nuevamente.");
+      }
+
+    } while (opcion !== 4); // El bucle continúa hasta que elija salir
+  </script>
+</body>
+</html>
