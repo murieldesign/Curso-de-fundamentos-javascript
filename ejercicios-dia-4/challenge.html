@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de inventario</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 { color: #2c3e50; }
+        button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        #inventario { margin-top: 20px; white-space: pre-line; background: #f2f2f2; padding: 10px; border-radius: 5px; }
+
+    </style>
+</head>
+<body>
+    <h1>Gestión de inventario</h1>
+    <!--Botones de manejo o acción-->
+    <button onclick="mostrarProductos()">Mostrar productos</button>
+    <button onclick="valorTotalInventario()">Valor Total</button>
+    <button onclick="filtrarCategoria()">Filtrar por categoría</button>
+    <button onclick="actualizarProducto()">Actualizar cantidad</button>
+    
+    <!--Contenedor donde se muestra la informacion-->
+    <div id="inventario"></div>
+    <script>
+        //Array de objetos
+        let inventario =[
+            {nombre:"Zuecos", precio: 60, cantidad: 10, categoria:"Calzado"},
+            {nombre:"Zapatilla", precio:90, cantidad:6, categoria:"Calzado deportivo"},
+            {nombre:"Pantalones", precio:100, cantidad:8, categoria: "Ropa"},
+            {nombre:"Reloj", precio:150, cantidad:3, categoria:"Accesorios"}
+        ];
+
+        //Función para mostrar Productos
+
+        function mostrarProductos(){
+            let contenido = "Productos disponibles: \n \n";
+            inventario.forEach (p =>{
+                contenido += `${p.nombre} | Precio: ${p.precio} € | Cantidad: ${p.cantidad} | Categoría: ${p.categoria} \n`;
+            });
+            document.getElementById("inventario").textContent = contenido;
+        }
+
+
+        //Función para calcular valor total
+
+        function valorTotalInventario(){
+            let total = inventario.reduce((acc,p) => acc + p.precio * p.cantidad,0);
+            //acc → es el acumulador, que guarda el total parcial.
+           //p → es el elemento actual del array (cada producto).
+          //p.precio * p.cantidad → calcula el valor total de ese producto.
+          //acc + p.precio * p.cantidad → suma ese valor al total acumulado.
+         //El 0 al final indica que el acumulador empieza en cero.
+         document.getElementById("inventario").textContent=`Valor total del inventario: ${total} € `;
+        }
+
+        //Función paras filtrar por categoria
+        function filtrarCategoria(){
+            let categoria = prompt("ingresa una categoría a filtrar:");
+            let filtrados = inventario.filter(p => p.categoria.toLocaleLowerCase() === categoria.toLocaleLowerCase());
+            if(filtrados.length>0){
+                let contenido= `Productos en la categoría "${categoria}" \n`;
+                filtrados.forEach(p => contenido += `${p.nombre} | Cantidad: ${p.cantidad} | Precio: ${p.precio}\n`);
+                document.getElementById("inventario"),textContent = contenido;
+            } else{
+                document.getElementById("inventario").textContent=`No se encontraron productos en la categoría "${categoria}"`;
+            }   
+        }
+
+        //Función para actualizar la cantidad del producto
+        function actualizarProducto(){
+            let nombreProducto = prompt("Ingresa el nombre del producto a actualizar");
+            let producto = inventario.find(p => p.nombre.toLocaleLowerCase() === nombreProducto.toLocaleLowerCase());
+
+            if(producto){
+                let nuevaCantidad = Number(prompt(`Cantidad actual de ${producto.nombre}: ${producto.cantidad} \n 
+                Ingresa la nueva cantidad`));
+                if(!isNaN( nuevaCantidad) && nuevaCantidad >= 0){
+                    producto.cantidad = nuevaCantidad;
+                    alert(`cantidad actualizada de ${producto.nombre}: ${producto.cantidad}`);
+                    mostrarProductos();
+                }else{
+                    alert("Cantidad no válida")
+                } 
+            }else{
+                alert(`Producto "${nombre.producto}" no encontrado`);
+            }
+        }
+
+        //mostrar inventario
+        mostrarProductos();
+
+
+
+    </script>
+
+</body>
+</html>
