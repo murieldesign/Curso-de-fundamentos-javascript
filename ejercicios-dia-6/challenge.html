@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar producto</title>
+    <style>
+    /* === Estilos generales === */
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 30px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    /* === Contenedor principal === */
+    .container {
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* === Inputs y botones === */
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: border 0.2s;
+    }
+
+    input:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    /* === Información y lista === */
+    #info {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background: #ecf0f1;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    /* === Adaptación a pantallas pequeñas === */
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        padding: 20px;
+      }
+      button {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar producto</h1>
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" id="nombre" placeholder="Nombre de producto"> <!--ingresa el producto-->
+        <label for="precio">Precio (€):</label>
+        <input type="number" id="precio" placeholder="Precio de producto"><!--ingresa el precio-->
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="categoria" placeholder="Categoría"><!--ingresa la categoria-->
+        
+        <button id="agregar">Agregar producto</button> <!--Agrega el producto al array-->
+        <br><br>
+        <label for="filtrar">Filtros categorías:</label>
+        <input type="text" id="filtrar" placeholder="Filtrar por categoría">
+        <button id="ver">Ver categoría</button><!--Este botón permitirá filtrar y mostrar productos por categoría.
+-->
+        <p id="info"></p><!--Aquí se mostrará el resumen del total de productos y el precio promedio.
+-->
+        <ul id="lista"></ul><!--Se usará para mostrar la lista de productos filtrados por categoría.
+--></div>
+        <script>
+            // Creamos un array vacío donde se guardarán los productos
+            let productos = [];
+
+                function agregarProducto() {
+                let nombre = document.getElementById("nombre").value;
+                let precio = parseFloat(document.getElementById("precio").value);
+                let categoria = document.getElementById("categoria").value;
+                
+                 // Validamos que los tres campos tengan contenido
+                if (nombre && precio && categoria) {
+                // Agregamos un nuevo objeto producto al array
+                    productos.push({ nombre, precio, categoria });
+                // Limpiamos los campos del formulario para seguir agregando
+                    document.getElementById("nombre").value = "";
+                    document.getElementById("precio").value = "";
+                    document.getElementById("categoria").value = "";
+                // Llamamos a la función que actualiza el resumen general
+                    mostrarResumen();
+                }
+                }
+                // --- FUNCIÓN PARA MOSTRAR RESUMEN DE PRODUCTOS ---
+                function mostrarResumen() {
+                // Total de productos almacenados
+                let total = productos.length;
+                // Suma de todos los precios con reduce()
+                let suma = productos.reduce((acc, prod) => acc + prod.precio, 0);
+                // Calculamos el promedio de precios
+                let promedio = (suma / total).toFixed(1);
+
+                // Mostramos los datos en el elemento con id="info"
+                document.getElementById("info").textContent = 
+                    `Total productos: ${total} | Precio promedio: ${promedio} €`;
+                }
+
+                // --- FUNCIÓN PARA FILTRAR PRODUCTOS POR CATEGORÍA ---
+
+                function filtrarCategoria() {
+                // Obtenemos la categoría escrita por el usuario
+                let filtro = document.getElementById("filtrar").value.toLowerCase();
+                // Referencia al elemento <ul> donde mostraremos los resultados
+                let lista = document.getElementById("lista");
+                // Limpiamos la lista antes de mostrar nuevos resultados
+                lista.innerHTML = "";
+                // Creamos un nuevo array con solo los productos que coinciden con la categoría
+                let filtrados = productos.filter(p => p.categoria.toLowerCase() === filtro);
+                // Recorremos los productos filtrados y los agregamos como elementos <li> en la lista
+                filtrados.forEach(prod => {
+                    let li = document.createElement("li");
+                    li.textContent = `${prod.nombre} - ${prod.precio} €`;
+                    lista.appendChild(li);
+                });
+                }
+                // --- ASOCIAMOS LAS FUNCIONES A LOS BOTONES ---
+
+                document.getElementById("agregar").addEventListener("click", agregarProducto);
+                document.getElementById("ver").addEventListener("click", filtrarCategoria);
+
+
+        </script>
+    
+</body>
+</html>

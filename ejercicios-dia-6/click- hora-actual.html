@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora Actual</title>
+</head>
+<body>
+    <button onclick="mostrarHora()">Mostrar Hora</button>
+    <p id="hora"></p>
+
+    <script>
+        function mostrarHora() {
+            let fecha = new Date();
+            let hora = fecha.getHours();
+            let minutos = fecha.getMinutes();
+            let segundos = fecha.getSeconds();
+
+            // Formato de hora
+            let horaActual = `${hora}:${minutos}:${segundos}`;
+            document.getElementById("hora").innerText = "La hora actual es: " + horaActual;
+        }
+    </script>
+</body>
+</html>

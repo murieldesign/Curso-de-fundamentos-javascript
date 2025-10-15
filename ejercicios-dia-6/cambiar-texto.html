@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar texto</title>
+</head>
+<body>
+    <p id="texto">Este es el texto inicial</p>
+    <button onclick="cambiarTexto()">Haz clic para cambiar el texto del botón</button>
+
+    <script>
+        function cambiarTexto(){
+            document.getElementById("texto").innerText = "El texto ha sido cambiado";
+        }
+        const boton = document.getElementById("cambiartexto");
+        const parrafo = document.getElementById("parrafo");
+
+        boton.addEventListener("click", function(){ parrafo.textContent = "Texto cambiado con exito";
+
+        });
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo según la Hora</title>
+</head>
+<body>
+    <h3 id="saludo"></h3>
+
+    <script>
+        function saludarSegunHora() {
+            let hora = new Date().getHours(); // Obtiene la hora actual
+            let saludo;
+
+            // Define el saludo según la hora del día
+            if (hora >= 0 && hora < 12) {
+                saludo = "¡Buenos días!";
+            } else if (hora >= 12 && hora < 18) {
+                saludo = "¡Buenas tardes!";
+            } else {
+                saludo = "¡Buenas noches!";
+            }
+
+            // Muestra el saludo en el h3
+            document.getElementById("saludo").innerText = saludo;
+        }
+
+        // Llamamos a la función al cargar la página
+        saludarSegunHora();
+    </script>
+</body>
+</html>

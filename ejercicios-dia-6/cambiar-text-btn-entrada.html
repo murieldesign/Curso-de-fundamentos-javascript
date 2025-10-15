@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Texto con Input</title>
+</head>
+<body>
+
+    <input type="text" id="nuevoTexto" placeholder="Escribe algo">
+    <button onclick="cambiarTexto()">Cambiar Texto</button>
+    <p id="textoCambio">Texto original</p>
+
+    <input type="text" id="entradaTexto" placeholder="Escribe algo">
+    <button id="mostrarTexto">Mostrar en párrafo</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        //Funcion que cambia el texto de u elemento por el que el usuario escribe
+        function cambiarTexto() {
+            let nuevoTexto = document.getElementById("nuevoTexto").value;
+            document.getElementById("textoCambio").innerText = nuevoTexto;
+        }
+        //Referencias a los elementos del DOM
+        const input = document.getElementById("entradaTexto");
+        const boton2 = document.getElementById("mostrarTexto");
+        const resultado = document.getElementById("resultado");
+
+        // 2. Añadimos el evento al botón, que al hacer click ejecute una funcion.
+
+        boton2.addEventListener("click", function () {
+        let texto = input.value.trim(); // Eliminamos espacios al principio y final
+        if (texto !== "") { //verificamos que el campo no esta vacio
+            resultado.textContent = `Tú escribiste: "${texto}"`; //si hay texto muestra resultado
+        } else {
+            resultado.textContent = "Por favor, escribe algo."; // si esta vacio
+        }
+        });
+
+</script>
+
+
+
+</body>
+</html>

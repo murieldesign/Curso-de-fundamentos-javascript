@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación Formulario</title>
+    <style>
+        /*Un poco de estilo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        form {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        #mensaje {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Validación de Formulario</h2>
+
+    <!-- Formulario -->
+    <form id="formulario" onsubmit="validarFormulario(event)" novalidate>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required ><br><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required ><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Mensaje dinámico -->
+    <p id="mensaje"></p>
+
+    <script>
+        // Función que valida el formulario
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita que el formulario se recargue
+
+            // Obtenemos los valores de los inputs
+            let nombre = document.getElementById("nombre").value.trim();
+            let edad = document.getElementById("edad").value.trim();
+            let mensaje = document.getElementById("mensaje");
+
+            // Validación simple
+            if (nombre === "" || edad === "") {
+                mensaje.innerText = "⚠️ Por favor, completa todos los campos.";
+                mensaje.style.color = "red";
+            } else {
+                mensaje.innerText = `✅ Gracias por tu envío, ${nombre}. Tienes ${edad} años.`;
+                mensaje.style.color = "green";
+            }
+        }
+    </script>
+</body>
+</html>
