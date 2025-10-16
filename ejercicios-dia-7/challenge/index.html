@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenge - Mini Gestor de tarjetas interactivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Challenge: Gestor de Tarjetas</h2>
+  <form id="formUsuario">
+   <fieldset>
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="number" id="edad" placeholder="Edad" required>
+    </fieldset>
+    <fieldset>
+    <input type="email" id="email" placeholder="Email" required>
+    <button type="submit">Agregar Usuario</button>
+    </fieldset>
+  </form>
+
+  <p>Total de usuarios: <span id="contadorUsuarios">0</span></p>
+  <div id="contenedorUsuarios"></div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

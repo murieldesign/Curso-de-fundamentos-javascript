@@ -1,0 +1,62 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  background-color: rgb(52, 52, 52);
+}
+.container {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#contenedorUsuarios .tarjeta {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  position: relative;
+}
+
+#contenedorUsuarios button {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+#contenedorUsuarios .btnEliminar {
+  top: 10px;
+  background-color: red;
+  color: white;
+}
+
+#contenedorUsuarios .btnEditar {
+  top: 40px;
+  background-color: blue;
+  color: white;
+}
+
+fieldset{
+    border: none;
+}
+input{
+   padding: 10px 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border-color: #d8d7d7;
+    border-style: solid;
+
+}
+button{
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
