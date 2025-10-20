@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto Final mi app</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Proyecto Final mi app</h1>
+    <nav>
+      <ul>
+        <li><a href="#tareas">Tareas</a></li>
+        <li><a href="#carrito">Carrito de Compras</a></li>
+        <li><a href="#notas">Notas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sección de Tareas -->
+    <section id="tareas">
+      <h2>Lista de Tareas</h2>
+      <input type="text" id="nuevaTarea" placeholder="Escribe tu tarea">
+      <button id="agregarTarea">Agregar Tarea</button>
+      <ul id="listaTareas"></ul>
+    </section>
+
+    <!-- Sección de Carrito de Compras -->
+    <section id="carrito">
+      <h2>Carrito de Compras</h2>
+      <div id="productosDisponibles">
+        <h3>Productos Disponibles</h3>
+        <ul id="listaProductos"></ul>
+      </div>
+      <div id="carritoCompras">
+        <h3>Tu Carrito</h3>
+        <ul id="listaCarrito"></ul>
+        <p id="totalCarrito"></p>
+      </div>
+    </section>
+
+    <!-- Sección de Notas -->
+    <section id="notas">
+      <h2>Notas</h2>
+      <input type="text" id="tituloNota" placeholder="Título de la nota">
+      <textarea id="contenidoNota" placeholder="Contenido de la nota"></textarea>
+      <button id="agregarNota">Agregar Nota</button>
+      <div id="listaNotas"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mi Plataforma de Proyectos</p>
+  </footer>
+
+</body>
+</html>
