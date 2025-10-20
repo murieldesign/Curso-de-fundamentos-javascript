@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge dia 8: Gestión dee productos</title>
+    <link href="style-challenge.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulario de Productos</h2>
+        <form id="formulario" novalidate>
+            <input type="text" id="producto" placeholder="Nombre del producto">
+            <input type="number" id="precio" placeholder="Precio">
+            <input type="text" id="categoria" placeholder="Categoría">
+            <button type="submit">Agregar Producto</button>
+        </form>
+
+    <p id="info"></p>
+    </div>
+    <br><br>
+    <div class="container">
+        <h3>Filtrar por Categoría</h3>
+        <input type="text" id="filtro" placeholder="Ej: tecnología">
+        <button id="filtrarBtn">Filtrar</button>
+        <ul id="lista"></ul>
+
+        <!-- Botón para cambiar a modo oscuro -->
+        <button id="modoOscuro">Modo Oscuro</button>
+    </div>
+    <script src="script-challennge.js"></script>
+</body>
+</html>

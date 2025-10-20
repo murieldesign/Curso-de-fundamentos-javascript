@@ -1,0 +1,102 @@
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #ffffff;
+}
+
+/* Formularios */
+form {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 94%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #6200ea;
+  box-shadow: 0 0 8px #6200ea50;
+  outline: none;
+}
+
+/* Botones */
+button {
+  padding: 10px 20px;
+  background-color: #6200ea;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #7e3ff2;
+  transform: translateY(-2px);
+}
+
+/* Mensajes de estado / respuesta */
+p {
+  margin-top: 10px;
+  color: #ffcc00;
+  font-weight: 500;
+}
+
+/* Lista de resultados */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #1e1e1e;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+li:hover {
+  background-color: #2a2a2a;
+}
+
+/* Inputs de filtro */
+#filtro {
+  max-width: 300px;
+}
+
+/* Contenedor general */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
