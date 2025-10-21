@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenge Día 9 - Análisis de Estudiantes</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>🎯 Challenge Día 9: Análisis de Estudiantes</h1>
+
+  <div class="btn-container">
+    <button onclick="mostrarLista()">Mostrar Lista</button>
+    <button onclick="mostrarAprobados()">Aprobados</button>
+    <button onclick="mostrarPromedio()">Promedio</button>
+    <button onclick="mostrarMayusculas()">Nombres en Mayúsculas</button>
+    <button onclick="ordenarNotas()">Ordenar por Nota</button>
+  </div>
+
+  <div id="resultado">Haz clic en un botón para ver el resultado 👆</div>
+  
+  <script>
+        let estudiantes = [
+            { nombre: "Ana", nota: 75 },
+            { nombre: "Luis", nota: 40 },
+            { nombre: "María", nota: 90 },
+            { nombre: "Carlos", nota: 55 },
+            { nombre: "Sofía", nota: 100 }
+            ];
+        
+       // Funcion para mostrar la lista de estudiantes.
+       
+       function mostrarLista(){
+
+        let texto="Lista de estudiantes \n\n"
+        estudiantes.forEach(e => texto += `${e.nombre}: ${e.nota}\n`);
+        document.getElementById("resultado").innerHTML= texto;
+            
+        }
+
+        // funcion de mostrar aprobados 
+
+        function mostrarAprobados(){
+            let aprobados = estudiantes.filter(e => e.nota >= 60);
+            let texto ="Aprobados: \n\n" + aprobados.map(e => `${e.nombre}: ${e.nota}`).join("\n");
+            document.getElementById("resultado").innerText= texto;
+        }
+        
+       // Funcion obtener promedio de notas
+
+       function mostrarPromedio(){
+        let promedio = estudiantes.reduce((acc,e) => acc + e.nota, 0) / estudiantes.length;
+        document.getElementById("resultado").innerText= `Promedio general de notas: ${promedio.toFixed(2)}`;
+       }
+
+       //Funcion para nombres en mayusculas
+
+     
+        function mostrarMayusculas() {
+        let mayus = estudiantes.map(e => e.nombre.toUpperCase());
+        document.getElementById("resultado").innerText = "Nombres en mayúsculas:\n\n" + mayus.join(", ");
+        }
+
+
+       // Funcion ordenar notas
+
+       function ordenarNotas(){
+        let ordenados = [...estudiantes].sort((a,b) => b.nota - a.nota);
+        let texto =" Estudiantes ordenados por notas (descendente): \n\n" + ordenados.map(e => `${e.nombre}: ${e.nota}`).join("\n");
+        document.getElementById("resultado").innerText = texto;
+       }
+
+
+
+  </script>
+
+</body>
+</html>
