@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Lista de Tareas</title>
+      <style>
+    /* Contenedor principal centrado */
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f7f8fa;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+    }
+       /* ======== CONTENEDOR RESPONSIVE ======== */
+    .container {
+      max-width: 700px;          /* ancho máximo */
+      margin: 40px auto;         /* centrado horizontal y separación superior */
+      padding: 0 16px;           /* espacio lateral adaptable */
+      display: flex;
+    
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      padding: 18px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.2px;
+    }
+
+    /* Fila del input + botón */
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    #tarea {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+    #tarea:focus {
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.08); /* sutil foco */
+      border-color: #6366f1;
+    }
+
+    #agregar {
+      padding: 10px 14px;
+      border: none;
+      background: #6366f1;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    #agregar:hover { transform: translateY(-1px); }
+    #agregar:active { transform: translateY(0); }
+
+    /* Lista de tareas */
+    #lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #lista li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: #fbfdff;
+      border: 1px solid #eef2f7;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    /* Texto de tarea */
+    .texto-tarea {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-right: 12px;
+    }
+
+    /* Botón eliminar (si decides añadirlo después) */
+    .btn-eliminar {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #ef4444;
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .btn-eliminar:hover {
+      background: rgba(239,68,68,0.06);
+    }
+
+    /* Pequeña nota responsive */
+    @media (max-width: 420px) {
+      .card { padding: 14px; }
+      h1 { font-size: 18px; }
+      #agregar { padding: 10px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<!-- Campo de texto para escribir una nueva tarea -->
+<input type="text" id="tarea" placeholder="Nueva tarea">
+
+<!-- Botón que añadirá la tarea a la lista -->
+<button id="agregar">Agregar</button>
+</div>
+<div class="container">
+<!-- Lista donde se mostrarán las tareas -->
+<ul id="lista"></ul>
+</div>
+<script>
+// Array donde se guardarán las tareas
+let tareas = [];
+
+// Escucha el clic en el botón "Agregar"
+document.getElementById("agregar").addEventListener("click", () => {
+  // Obtiene el texto del input y elimina espacios en blanco al inicio y final
+  let texto = document.getElementById("tarea").value.trim();
+
+  // Si el campo está vacío, muestra una alerta y sale de la función
+  if (texto === "") {
+    alert("La tarea no puede estar vacía");
+    return; // Detiene la ejecución aquí
+  }
+
+  // Agrega la nueva tarea al arreglo de tareas
+  tareas.push(texto);
+
+  // Muestra nuevamente la lista de tareas actualizada
+  mostrarTareas();
+
+  // Limpia el campo de texto después de agregar la tarea
+  document.getElementById("tarea").value = "";
+});
+
+// Función que muestra las tareas en la lista HTML
+function mostrarTareas() {
+  // Obtiene la referencia al elemento <ul>
+  let lista = document.getElementById("lista");
+
+  // Limpia el contenido anterior de la lista
+  lista.innerHTML = "";
+
+  // Recorre todas las tareas del arreglo
+  for (let tarea of tareas) {
+    // Crea un nuevo elemento <li> por cada tarea
+    let li = document.createElement("li");
+
+    // Coloca el texto de la tarea dentro del <li>
+    li.textContent = tarea;
+
+    // Añade el <li> dentro de la lista
+    lista.appendChild(li);
+  }
+}
+</script>
+
+
+
+    
+</body>
+</html>

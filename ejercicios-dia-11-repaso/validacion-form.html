@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validaciones de Formularios</title>
+</head>
+<body>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+<button id="btnEnviar">Enviar</button>
+
+<script>
+document.getElementById("btnEnviar").addEventListener("click", () => {
+  let nombre = document.getElementById("nombre").value.trim();
+  // .trim() elimina espacios al principio y final del texto.
+
+  if (nombre === "") {
+    alert("El nombre no puede estar vacío");
+  } else {
+    alert("Hola" + nombre);
+  }
+});
+</script>
+
+    
+</body>
+</html>
