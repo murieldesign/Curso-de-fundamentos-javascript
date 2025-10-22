@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1: Guardar y mostrar objeto</title>
+</head>
+<body>
+  <h2>Detalles del Usuario</h2>
+  <div id="usuario"></div>
+
+  <script>
+
+    // Crear objeto usuario
+    const usuario = {
+      nombre: 'Juan Pérez',
+      edad: 30,
+      email: 'juan@example.com'
+    };
+
+    // Convertir objeto a JSON y guardarlo en localStorage
+
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    // Recuperar y mostrar el objeto en la página
+
+    const usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
+    document.getElementById('usuario').innerHTML = `
+      <p>Nombre: ${usuarioGuardado.nombre}</p>
+      <p>Edad: ${usuarioGuardado.edad}</p>
+      <p>Email: ${usuarioGuardado.email}</p>
+    `;
+  </script>
+</body>
+</html>
+

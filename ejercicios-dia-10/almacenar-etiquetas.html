@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 3: Etiquetas</title>
+</head>
+<body>
+  <h2>Etiquetas Únicas</h2>
+  <div id="etiquetas"></div>
+
+  <script>
+    // Crear un Set con etiquetas
+    const etiquetas = new Set(['JavaScript', 'HTML', 'CSS', 'JavaScript']);
+
+    // Mostrar las etiquetas en la página
+    const contenedor = document.getElementById('etiquetas');
+    etiquetas.forEach(etiqueta => {
+      const span = document.createElement('span');
+      span.textContent = etiqueta;
+      contenedor.appendChild(span);
+    });
+  </script>
+</body>
+</html>
+

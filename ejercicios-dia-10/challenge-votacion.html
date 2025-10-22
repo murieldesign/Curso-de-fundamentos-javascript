@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Challenge: Sistema de Votación</title>
+</head>
+<body>
+  <h2>Votación</h2>
+  <div id="opciones">
+    <button data-opcion="Opción A">Opción A</button>
+    <button data-opcion="Opción B">Opción B</button>
+    <button data-opcion="Opción C">Opción C</button>
+  </div>
+  <h3>Resultados</h3>
+  <ul id="resultados"></ul>
+
+  <script>
+    // Crear un Map para almacenar los votos
+    const votos = new Map([
+      ['Opción A', new Set()],
+      ['Opción B', new Set()],
+      ['Opción C', new Set()]
+    ]);
+
+    // Función para mostrar los resultados
+    function mostrarResultados() {
+      const lista = document.getElementById('resultados');
+      lista.innerHTML = '';
+      votos.forEach((votantes, opcion) => {
+        const li = document.createElement('li');
+        li.textContent = `${opcion}: ${votantes.size} votos`;
+        lista.appendChild(li);
+      });
+    }
+
+    // Manejar el clic en las opciones de votación
+    document.getElementById('opciones').addEventListener('click', (event) => {
+      if (event.target.tagName === 'BUTTON') {
+        const opcion = event.target.getAttribute('data-opcion');
+        const nombreUsuario = prompt('Ingresa tu nombre:');
+        if (nombreUsuario) {
+          const votantes = votos.get(opcion);
+          if (votantes.has(nombreUsuario)) {
+            alert('Ya has votado por esta opción.');
+          } else {
+            votantes.add(nombreUsuario);
+            mostrarResultados();
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

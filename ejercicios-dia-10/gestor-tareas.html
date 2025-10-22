@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4: Gestor de Tareas</title>
+</head>
+<body>
+  <h2>Mis Tareas</h2>
+  <input type="text" id="nuevaTarea" placeholder="Nueva tarea">
+  <button id="agregarTarea">Agregar</button>
+  <ul id="listaTareas"></ul>
+
+  <script>
+
+    // Recuperar tareas del localStorage o inicializar vacío
+    let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+
+    // Función para mostrar las tareas
+    function mostrarTareas() {
+      const lista = document.getElementById('listaTareas');
+      lista.innerHTML = '';
+      tareas.forEach((tarea, index) => {
+        const li = document.createElement('li');
+        li.textContent = tarea;
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = () => {
+          tareas.splice(index, 1);
+          localStorage.setItem('tareas', JSON.stringify(tareas));
+          mostrarTareas();
+        };
+        li.appendChild(botonEliminar);
+        lista.appendChild(li);
+      });
+    }
+
+    // Agregar nueva tarea
+    document.getElementById('agregarTarea').onclick = () => {
+      const tarea = document.getElementById('nuevaTarea').value.trim();
+      if (tarea) {
+        tareas.push(tarea);
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+        mostrarTareas();
+        document.getElementById('nuevaTarea').value = '';
+      }
+    };
+
+    // Mostrar tareas al cargar la página
+    mostrarTareas();
+  </script>
+</body>
+</html>

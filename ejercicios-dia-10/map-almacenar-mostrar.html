@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2: Calificaciones</title>
+</head>
+<body>
+  <h2>Calificaciones de Estudiantes</h2>
+  <ul id="calificaciones"></ul>
+
+  <script>
+
+    // Crear un Map con calificaciones
+    const calificaciones = new Map([
+      ['Ana', 9],
+      ['Luis', 7],
+      ['Carlos', 8]
+    ]);
+
+    // Mostrar las calificaciones en la página
+    const lista = document.getElementById('calificaciones');
+    calificaciones.forEach((nota, estudiante) => {
+      const li = document.createElement('li');
+      li.textContent = `${estudiante}: ${nota}`;
+      lista.appendChild(li);
+    });
+  </script>
+</body>
+</html>
